@@ -1,8 +1,20 @@
 class Bob
-  def hey(input)
-    return 'Fine. Be that way!' if input.strip.empty?
-    return 'Woah, chill out!'   if input == input.upcase && input =~ /[A-Za-z]/
-    return 'Sure.'              if input.end_with?('?')
+  def hey(phrase)
+    return 'Fine. Be that way!' if is_silent?(phrase)
+    return 'Woah, chill out!'   if is_shouting?(phrase)
+    return 'Sure.'              if is_asking?(phrase)
     'Whatever.'
+  end
+
+  def is_silent?(phrase)
+    phrase.strip.empty?
+  end
+
+  def is_shouting?(phrase)
+    phrase == phrase.upcase && phrase =~ /[A-Za-z]/
+  end
+
+  def is_asking?(phrase)
+    phrase.end_with?('?')
   end
 end
